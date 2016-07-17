@@ -1,0 +1,199 @@
+Listado de rutas de carpetas
+El n£mero de serie del volumen es 00000098 845E:D618
+C:.
+|   arbol.bat
+|   Arbol.txt
+|   
+\---public_html
+    |   index.php
+    |   
+    +---bower_components
+    |   +---angular
+    |   |       .bower.json
+    |   |       angular-csp.css
+    |   |       angular.js
+    |   |       angular.min.js
+    |   |       angular.min.js.gzip
+    |   |       angular.min.js.map
+    |   |       bower.json
+    |   |       index.js
+    |   |       package.json
+    |   |       README.md
+    |   |       
+    |   \---ngcart
+    |       |   .bower.json
+    |       |   .gitignore
+    |       |   bower.json
+    |       |   Gruntfile.js
+    |       |   karma.conf.js
+    |       |   package.json
+    |       |   README.md
+    |       |   
+    |       +---dist
+    |       |       ngCart.js
+    |       |       ngCart.min.js
+    |       |       
+    |       +---src
+    |       |       ngCart.directives.js
+    |       |       ngCart.directives_test.js
+    |       |       ngCart.fulfilment.js
+    |       |       ngCart.js
+    |       |       ngCart_test.js
+    |       |       
+    |       \---template
+    |           \---ngCart
+    |                   addtocart.html
+    |                   cart.html
+    |                   checkout.html
+    |                   summary.html
+    |                   
+    +---css
+    |   |   animate.css
+    |   |   app-user.css
+    |   |   bootstrap-theme.css
+    |   |   bootstrap-theme.css.map
+    |   |   bootstrap-theme.min.css
+    |   |   bootstrap.css
+    |   |   bootstrap.css.map
+    |   |   bootstrap.min.css
+    |   |   bootstrap.superhero.min.css
+    |   |   custom-fonts.css
+    |   |   flexslider.css
+    |   |   font-awesome.css
+    |   |   overwrite.css
+    |   |   style.css
+    |   |   
+    |   \---fancybox
+    |           blank.gif
+    |           fancybox_loading.gif
+    |           fancybox_overlay.png
+    |           fancybox_sprite.png
+    |           jquery.fancybox.css
+    |           
+    +---eventos
+    |       eventos.php
+    |       eventos1.php
+    |       
+    +---fonts
+    |   |   fontawesome-webfont.eot
+    |   |   fontawesome-webfont.svg
+    |   |   fontawesome-webfont.ttf
+    |   |   fontawesome-webfont.woff
+    |   |   FontAwesome.otf
+    |   |   glyphicons-halflings-regular.eot
+    |   |   glyphicons-halflings-regular.svg
+    |   |   glyphicons-halflings-regular.ttf
+    |   |   glyphicons-halflings-regular.woff
+    |   |   glyphicons-halflings-regular.woff2
+    |   |   
+    |   \---customicon
+    |           Icons.eot
+    |           Icons.svg
+    |           Icons.ttf
+    |           Icons.woff
+    |           
+    +---img
+    |   +---index
+    |   |       foro.jpg
+    |   |       indic.jpg
+    |   |       news.jpg
+    |   |       vinyls.jpg
+    |   |       
+    |   +---products
+    |   |       acdc.jpg
+    |   |       dylanross.jpg
+    |   |       english-graffiti.jpg
+    |   |       marc-anthony.jpg
+    |   |       one.jpg
+    |   |       sb.jpg
+    |   |       
+    |   +---shop-slides
+    |   |       1.jpg
+    |   |       2.jpg
+    |   |       3.jpg
+    |   |       4.jpg
+    |   |       5.jpg
+    |   |       checkout.jpg
+    |   |       checkout2.jpg
+    |   |       
+    |   \---slides
+    |           1.jpg
+    |           2.jpg
+    |           3.jpg
+    |           
+    +---inc
+    |       connect.php
+    |       encabezado-index.php
+    |       encabezado.php
+    |       pie-index.php
+    |       pie.php
+    |       
+    +---js
+    |   |   animate.js
+    |   |   bootstrap.js
+    |   |   bootstrap.min.js
+    |   |   custom.js
+    |   |   dirPagination.js
+    |   |   jPaginate.js
+    |   |   jquery-1.9.1.min.js
+    |   |   jquery.easing.1.3.js
+    |   |   jquery.fancybox-media.js
+    |   |   jquery.fancybox.pack.js
+    |   |   jquery.flexslider.js
+    |   |   jquery.js
+    |   |   jquery.leanModal.min.js
+    |   |   npm.js
+    |   |   validate.js
+    |   |   
+    |   +---flexslider
+    |   |       jquery.flexslider.js
+    |   |       setting.js
+    |   |       
+    |   +---google-code-prettify
+    |   |       prettify.css
+    |   |       prettify.js
+    |   |       
+    |   +---portfolio
+    |   |       jquery.quicksand.js
+    |   |       setting.js
+    |   |       
+    |   \---quicksand
+    |           jquery.quicksand.js
+    |           setting.js
+    |           
+    +---lib-user
+    |       ngStorage.js
+    |       
+    +---scripts-shop
+    |       app-shop.js
+    |       controllers.js
+    |       services.js
+    |       
+    +---scripts-user
+    |       app-user.js
+    |       controllers.js
+    |       services.js
+    |       
+    +---shop
+    |       cart-view.html
+    |       checkout-view.html
+    |       product-page.php
+    |       product-view.html
+    |       shop-connect2.php
+    |       shop-view.html
+    |       shop.php
+    |       
+    +---skins
+    |       default.css
+    |       
+    \---user-views
+            account-settings.html
+            home.html
+            logout.html
+            my-orders.html
+            order-details.html
+            signin.html
+            signup.html
+            user-profile.html
+            user.php
+            

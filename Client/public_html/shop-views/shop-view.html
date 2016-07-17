@@ -1,0 +1,158 @@
+<div class="container" data-ng-init="getProducts();randomPicture()">
+
+
+
+<div class="row">
+
+    <!-- Precio y número de items-->
+
+   <div class="col-xs-offset-10 col-xs-4">
+        <h3>Summary</h3>
+        <ngcart-summary></ngcart-summary>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+         <img src="../img/shop-slides/{{picture}}.jpg" alt="" />
+    </div>              
+</div>
+
+
+
+
+<div  class="row">
+                
+<!-- #################### SIDEBAR LEFT #################### -->
+
+        <section>
+        <aside class="left-sidebar col-xs-3">
+        
+        <div class="widget">
+            <form class="form-search">
+                <input class="form-control" ng-model="searchText" type="text" placeholder="Search">
+            </form>
+        </div>
+
+        <div class="widget">
+            <h5 class="widgetheading">Type</h5>
+            <ul>
+                <li ng-repeat="x in products | unique:'type'"><input type="checkbox" ng-click="includetype(x.type)"> {{ x.type}}</li>
+            </ul>
+        </div>
+
+
+        <div class="widget">
+            <h5 class="widgetheading">Genre</h5>
+            <ul>
+                <li ng-repeat="x in products | unique:'category'"><input type="checkbox" ng-click="includecategory(x.category)"> {{ x.category }}</li>
+            </ul>
+        </div>
+
+        <div class="widget">
+            <h5 class="widgetheading">Price</h5>
+            <ul>
+                <li ng-repeat="x in products | unique:'price'"><input type="checkbox" ng-click="includeprice(x.price)"> {{ x.price }}$</li>
+            </ul>
+        </div>          
+
+
+
+        </aside>      <!--LEFT SIDEBAR -->
+              
+
+
+    <!-- PRODUCTOS-->
+
+
+   
+   <div class="col-xs-3" dir-paginate="x in products | filter:searchText | filter:categoryFilter | filter:typeFilter | filter:priceFilter |itemsPerPage: 6">
+
+
+            <div class="pricing-box-alt" >
+                
+                <div class="pricing-heading">
+                    <a href="shop.php#/product-details" ng-click="setProductIdtoShow(x.productId);setCategorytoShow(x.category);"><img id="imgS" src="../img/products/{{x.image}}"></a>
+                    <h4>{{ x.productname }}</h4>
+                </div>
+
+                <div class="product-quantity"></div>
+
+                <div class="pricing-terms">
+                    <h6>{{ x.price }}$</h6>
+                </div>
+
+                <div class="pricing-content">               
+                </div>
+
+                <div class="pricing-action">
+                     <ngcart-addtocart id="{{ x.productId }}" name="{{ x.productname }}" price="{{ x.price }}" quantity="1" quantity-max="30" data="item">comprar</ngcart-addtocart>
+                </div>
+
+            </div>  
+            </div>
+    </div><!-- PRODUCTS-->  
+</div>
+
+<div class="pull-right" style="margin-right:2em;"><dir-pagination-controls></dir-pagination-controls></div>
+</section>  
+
+<section> 
+    <div class="row">
+        <div class="col-md-12"> 
+        <div class="col-xs-offset-10 col-xs-4">    
+            <div class="header-order-details">Checkout</div>  
+            <div class="row">
+                <div class="col-md-6">
+                     <div ng-show="{{token}}">
+                      <a href="#/cart"> <button class="btn btn-primary">Checkout</button></a>
+                     </div>
+
+                    <div ng-hide="{{token}}"> 
+                     <a href="http://localhost:8080/user-views/user.php?#/signin"> <button class="btn btn-primary">Checkout</button></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+</section>  
+</div>
+ 
+
+<!--  ########################### TEMPLATE ADD TO CART ########################### -->
+<script type="text/ng-template" id="template/ngCart/addtocart.html">
+
+ <div ng-hide="attrs.id">
+    <a class="btn btn-lg btn-primary" ng-disabled="true" ng-transclude></a>
+</div>
+
+<div ng-show="attrs.id">
+    <div>
+        <span ng-show="quantityMax">
+            <select name="quantity" id="quantity" ng-model="q"
+                    ng-options=" v for v in qtyOpt"></select>
+        </span>
+        <a class="btn btn-sm btn-primary"
+           ng-click="ngCart.addItem(id, name, price, q, data)"
+           ng-transclude></a>
+    </div>
+    <div class="item-added-msg" ng-show="inCart()">
+        Item added!. <a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove</a>
+    </div>
+</div> 
+</script>
+
+<!--  ########################### TEMPLATE SUMMARY ########################### -->
+
+<script type="text/ng-template" id="template/ngCart/summary.html"><div class="row">
+ 
+    <div class="col-md-6">{{ ngCart.getTotalItems() }}
+        <ng-pluralize count="ngCart.getTotalItems()" when="{1: 'item', 'other':'items'}"></ng-pluralize>
+        <br />{{ ngCart.totalCost() | currency }}
+    </div>
+</div>
+</script>
+

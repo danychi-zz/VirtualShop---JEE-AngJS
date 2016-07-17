@@ -1,0 +1,7 @@
+INDEX VERSION 1.3+C:\Users\Daniel\Dropbox\tfg\MyGitTfg\ServerRecover\virtualShopWS\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+986477786.index
+719221891.index
+3717207253.index
+117514347.index
+3545504324.index
+2423673031.index

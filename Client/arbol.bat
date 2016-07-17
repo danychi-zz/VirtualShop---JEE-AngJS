@@ -1,0 +1,1 @@
+tree %1 /f /a >C:\Users\danychi24\Dropbox\tfg\MyGitTfg\Client\Arbol.txt

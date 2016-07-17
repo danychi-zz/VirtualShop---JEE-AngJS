@@ -1,0 +1,144 @@
+  
+  <div class="container"  data-ng-init="getUserInfo();">
+    <div class="row">
+            <div class="col-md-6 order-details" >
+               <div class="header-order-details">User Info</div>
+                <ul>
+                  <li>Name: {{userInfo.username}} {{userInfo.firstName}} </li>
+                  <li>Billing Address: {{userInfo.billingAddress}} </li> 
+                  <li>Telephone: {{userInfo.phone}} </li> 
+                  <li>Email: {{userInfo.email}} </li> 
+                  <li>City: {{userInfo.city}} </li> 
+                  <li>Postal Code: {{userInfo.postalCode}}</li>  
+                </ul>
+                </br>
+                <h6>Is your Info ok? </br>You can update it from your user profile <a href="http://localhost:8080/user-views/user.php#/account-settings">Goto!</a></h6> 
+            </div>
+
+
+
+            <div class="col-md-6">
+               <div class="header-order-details">Payment Details</div>
+              <div class="panel-body">
+                <form class="form-horizontal" role="form" ng-submit="createOrder();">
+
+                    <div class="form-group">
+                        <label for="description" class="col-sm-2 control-label">Payment Method</label>
+
+                        <div class="col-sm-6">
+                            <input type="string" class="form-control" id="description" name="description" placeholder="Payment Method"
+                                   ng-model="description">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="holderName" class="col-sm-2 control-label">Holder Name</label>
+
+                        <div class="col-sm-6">
+                            <input type="string" class="form-control" id="holderName" name="holderName"
+                                   placeholder="Holder Name" ng-model="holderName">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="number" class="col-sm-2 control-label">Number</label>
+
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" id="number" name="number"
+                                   placeholder="Card Number" ng-model="number">
+                        </div>
+                    </div>
+
+                     <div class="form-group">
+                        <label for="expDate" class="col-sm-2 control-label">Expiration Date</label>
+
+                        <div class="col-sm-6">
+                            <input type="string" class="form-control" id="expDate" name="expDate"
+                                   placeholder="YYYY-MM-dd" ng-model="expDate">
+                        </div>
+                    </div>
+
+                     <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-6">
+                            <button type="submit" class="btn btn-primary pull-right">Confirm</button>
+                        </div>
+                    </div>
+                    <p data-ng-show="error" class="error">{{ error }}</p>
+                </form>
+                </div>
+            </div>
+
+            
+        </div><!--  ########################### ROW ########################### -->
+
+        <div class="row">   
+          <img src="../img/shop-slides/checkout.jpg" style="width=100%;" alt="" />
+        </div>
+       
+
+        <div class="row">        
+
+        <div class ="col-md-12">
+              <h4>Items Ordered</h4>
+
+              <ngcart-cart></ngcart-cart>
+
+              <script type="text/ng-template" id="template/ngCart/cart.html">
+              <div class="alert alert-warning" role="alert" ng-show="ngCart.getTotalItems() === 0">
+                  Your cart is empty
+              </div>
+
+              <div class="table-responsive col-lg-12" ng-show="ngCart.getTotalItems() > 0">
+
+                  <table class="table table-striped ngCart cart">
+
+                      <thead>
+                      <tr>
+                          <th></th>
+                          <th>Tittle</th>
+                          <th>Quantity</th>
+                          <th>Amount</th>
+                          <th>Total</th>
+                      </tr>
+                      </thead>
+                      <tfoot>
+                      <tr ng-show="ngCart.getTax()">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>Tax ({{ ngCart.getTaxRate() }}%):</td>
+                          <td>{{ ngCart.getTax() | currency }}</td>
+                      </tr>
+                      <tr ng-show="ngCart.getShipping()">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>Shipping:</td>
+                          <td>{{ ngCart.getShipping() | currency }}</td>
+                      </tr>
+                      <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>Total:</td>
+                          <td>{{ ngCart.totalCost() | currency }}</td>
+                      </tr>
+                      </tfoot>
+                      <tbody>
+                      <tr ng-repeat="item in ngCart.getCart().items track by $index">
+                          <td></td>
+                          <td>{{ item.getName() }}</td>
+                          <td>{{ item.getQuantity() | number }}</td>
+                          <td>{{ item.getPrice() | currency}}</td>
+                          <td>{{ item.getTotal() | currency }}</td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+        </div>
+        </div><!--  ########################### ROW ########################### -->
+
+         
+
+       
+

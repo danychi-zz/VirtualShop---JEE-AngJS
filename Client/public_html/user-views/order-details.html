@@ -1,0 +1,78 @@
+  <div class="container"  data-ng-init="getOrders();getOrderIdtoShow();getProductsIdByOrderId();getProductsByProductsId();getOrderDetailsByOrderId();">
+        <div class="row">
+
+            <nav>
+            <div class="col-lg-4 user-profile">
+                <ul>
+                    <li><a href="user.php#/user-profile">User Profile</a></li>
+                    <li><a href="user.php#/account-settings">Account Settings</a></li>
+                    <li><a href="user.php#/my-orders">My orders</a></li>
+                    <li><a href="user.php#/logout" ng-click="logout()">Logout</a></li>
+                </ul>
+               
+            </div>
+            </nav>
+
+            <div class="col-lg-8">
+                <h3>Order Details from Order # {{orderId}}</h3>
+
+              <div class "col-md-12 order-info" data-ng-init="getSingleStatus(x.statusId)"ng-repeat="x in orders 
+              | filter:{orderId:orderId}:true">
+                <h5>STATUS:  {{ss}} </h5>
+                <h5>ORDER DATE: {{x.orderDate}}</h5>
+              </div>
+
+
+              <div class="col-md-6 order-details"  data-ng-init="recoverUserInfo()">
+                <div class="header-order-details">User Info</div>
+                <ul> 
+                  <li>Name: {{userInfo.username}} {{userInfo.firstName}} </li>
+                  <li>Billing Address: {{userInfo.billingAddress}} </li> 
+                  <li>Telephone: {{userInfo.phone}} </li> 
+                  <li>Email:{{userInfo.email}} </li> 
+                  <li>City: {{userInfo.city}} </li> 
+                  <li>Postal Code: {{userInfo.postalCode}}</li>  
+                </ul>
+
+              
+              </div>
+
+              <div class="col-md-6 order-details" data-ng-init="getPaymentInfo()">
+                <div class="header-order-details">Payment Method</div>
+                <ul> 
+                  <li>Payment Method: {{paymentInfo.description}} </li>
+                  <li>Holder Name: {{paymentInfo.holderName}} </li> 
+                  <li>Number: {{paymentInfo.number}}  </li> 
+                  <li>Exp. Date: {{paymentInfo.expDate}}  </li> 
+                </ul>
+              
+              </div>
+
+
+              <div class ="col-md-12">
+                <div class="header-order-details"><b>Items Ordered</b></div>
+
+                  <table class="orders-table" style="width:100%">
+                  <tr>
+                    <th>Tittle</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Cover</th>
+                  </tr>
+                  
+                  <tr ng-repeat="x in productsOrderDetail">         
+                    <td>{{x.author}} - {{x.productname}} </td>
+                    <td ng-repeat="y in orderDetails | filter:{productId:x.productId}:true">{{y.quantity}}</td>
+                    <td ng-repeat="z in orderDetails | filter:{productId:x.productId}:true">{{z.total}}$</td>
+                    <td> <img id="imgS" src="../img/products/{{x.image}}"></td>
+                  </tr>
+                </table>
+              </div>
+
+            
+
+            </div>
+
+
+        </div>
+    </div>
