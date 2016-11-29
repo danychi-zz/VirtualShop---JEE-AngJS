@@ -18,7 +18,7 @@
             
             $httpProvider.defaults.crossDomain=true;
             $httpProvider.defaults.useXDomain = true;
-            $httpProvider.defaults.withCredentials = true;
+            $httpProvider.defaults.withCredentials = false;
 
             $routeProvider.
                 when('/', {
@@ -56,9 +56,7 @@
                 otherwise({
                     redirectTo: '/'
                 });
-
         
-
             $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function ($q, $location, $localStorage) {
                 return {
                     'request': function (config) {

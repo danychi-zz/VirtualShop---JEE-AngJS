@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- validan la estructura del xml y que se puedan utilizar las etiquetas bean, property, etc -->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<tx:annotation-driven proxy-target-class="true"/> 
+	<!-- se carga el dialecto que utilizará hibernate -->
+	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+	
+	<!-- Gestiona la transaccionalidad -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+		 <qualifier value="pfc"/>
+	</bean>
+	<!-- Objeto que gestiona toda la persistencia -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="classpath:config/persistenceConfig.xml" />
+		<property name="persistenceUnitName" value="restPersistenceDialect" />
+		<property name="dataSource" ref="dataSourceAP"/>
+		<property name="packagesToScan" value="pfc.virtualshopws.*" />
+	</bean>
+	
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor">
+    	<property name="defaultPersistenceUnitName" value="restPersistenceDialect"/>
+    </bean>
+    
+    <!-- configuración del data source, acceso a la base de datos, este objeto se conecta a la BBDD -->
+    <bean id="dataSourceAP" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/untitled" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean>   
+
+</beans>

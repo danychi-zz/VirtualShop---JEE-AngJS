@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration PUBLIC  "-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+<!-- appender formato donde se van a mostrar las trazas de los logs se define la consola = main
+y un fichero donde se va a almacenar fileVSLog  -->
+	<appender name="main" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- param name="ConversionPattern" value="%d{HH:mm:ss} %5p [%-20c{1}] %m%n" / -->
+			<param name="ConversionPattern" value="%d %-5p %c:%-5L - [%X{requestId}] [%X{userName}] %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="fileVSLog" class="org.apache.log4j.RollingFileAppender">
+		<param name="append" value="true" />
+		<param name="maxFileSize" value="10MB" />
+		<param name="maxBackupIndex" value="10" />
+		<param name="file" value="${catalina.home}/logs/vs.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %c:%-5L - [%X{requestId}] [%X{userName}] %m%n" />
+		</layout>
+	</appender>
+
+
+	<category name="org.jboss.logging">
+		<priority value="ERROR" />
+		<appender-ref ref="main" />
+	</category>
+
+	<category name="org.jboss.weld">
+		<priority value="ERROR" />
+		<appender-ref ref="fileVSLog" />
+	</category>
+
+	<logger name="controller">
+		<level value="ERROR" />
+		<appender-ref ref="main" />
+		<appender-ref ref="fileVSLog" />
+	</logger>
+<!-- 
+Category                    Function
+
+org.hibernate.SQL           Log all SQL DML statements as they are executed
+org.hibernate.type          Log all JDBC parameters
+org.hibernate.tool.hbm2ddl  Log all SQL DDL statements as they are executed
+org.hibernate.pretty        Log the state of all entities (max 20 entities) associated with the session at flush time
+org.hibernate.cache         Log all second-level cache activity
+org.hibernate.transaction   Log transaction related activity
+org.hibernate.jdbc          Log all JDBC resource acquisition
+org.hibernate.hql.ast.AST   Log HQL and SQL ASTs during query parsing
+org.hibernate.secure        Log all JAAS authorization requests
+org.hibernate               Log everything (a lot of information, but very useful for troubleshooting) 
+ -->
+
+	<logger name="org.hibernate.SQL">
+		<level value="INFO" />
+		<appender-ref ref="fileVSLog" />
+		<appender-ref ref="main" />
+	</logger>
+	
+	<logger name="org.springframework" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="fileVSLog" />
+		<appender-ref ref="main" />
+	</logger>
+	<!--  todos los paquetes que empiecen por pfc.virtualshopws se mostraran los errores en los
+	dos appenders que ha recibido-->
+	<category name="pfc.virtualshopws">
+		<priority value="ERROR" />
+		<appender-ref ref="fileVSLog" />
+		<appender-ref ref="main" />
+	</category>
+	
+	<logger name="org.hibernate">
+		<level value="ERROR" />
+		<appender-ref ref="fileVSLog" />
+		<appender-ref ref="main" />
+	</logger>
+	
+	
+</log4j:configuration>
