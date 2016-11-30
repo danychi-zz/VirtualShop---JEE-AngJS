@@ -35,7 +35,7 @@
             
             $httpProvider.defaults.crossDomain=true;
             $httpProvider.defaults.useXDomain = true;
-            $httpProvider.defaults.withCredentials = true;
+            $httpProvider.defaults.withCredentials = false;
 
             $routeProvider.
                 when('/', {

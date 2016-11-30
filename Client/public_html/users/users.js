@@ -1,12 +1,8 @@
-(function () {
-    'use strict';
+    angular
+        .module('app')
+        .controller('UserController', ['$rootScope', '$scope', '$location','$filter', '$localStorage', 'userService', UserController]);
 
-    angular.module('app')
-        .controller('HomeController', ['$rootScope', '$scope', '$location','$filter', '$localStorage', 'Auth',
-            function ($rootScope, $scope, $location, $filter, $localStorage,  Auth) {
-
-             
-
+            function UserController ($rootScope, $scope, $location, $filter, $localStorage,  userService) {
                 //########## SUCCESS FUNCTIONS ########## 
                 function successAuth(res) {
                     $localStorage.token = res;
@@ -58,11 +54,6 @@
                     window.location.reload();
                     window.alert("Order deleted Successfully!");
                 }
-
-
-
-
-              
 
                 //########## LOGIN/REGISTER/LOGOUT FUNCTIONS ########## 
 
@@ -216,8 +207,5 @@
                 $scope.getSingleStatus = function (statusId){
                     $localStorage.ss = (Auth.getStatus(statusId));
                     $rootScope.ss = $localStorage.ss;
-                }
-
-               
-            }])
-})();
+                }  
+            }

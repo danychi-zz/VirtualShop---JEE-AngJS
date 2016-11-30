@@ -1,19 +1,6 @@
-(function () {
-    'use strict';
+angular
+		.module('app')
 
-    angular.module('app', [
-        'ngStorage',
-        'ngRoute'
-    ])
-
-        .constant('urls', {
-            BASE: 'http://localhost:80',
-            BASE_API_USERS: 'http://localhost:8085/virtualShopWS/api/rest/users/',
-            BASE_API_ORDERS : 'http://localhost:8085/virtualShopWS/api/rest/orders/',
-            BASE_API_PAYMENT_DETAILS : 'http://localhost:8085/virtualShopWS/api/rest/paymentDetails/',
-            BASE_API_PRODUCTS : 'http://localhost:8085/virtualShopWS/api/rest/products/',
-            BASE_API_ORDER_DETAILS : 'http://localhost:8085/virtualShopWS/api/rest/orderDetails/'
-        })
         .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
             
             $httpProvider.defaults.crossDomain=true;
@@ -22,41 +9,41 @@
 
             $routeProvider.
                 when('/', {
-                    templateUrl: 'home.html',
+                    templateUrl: 'users/templates/home.html',
                     controller: 'HomeController'
                 }).
                 when('/signin', {
-                    templateUrl: 'signin.html',
+                    templateUrl: 'users/templates/signin.html',
                     controller: 'HomeController'
                 }).
                 when('/signup', {
-                    templateUrl: 'signup.html',
+                    templateUrl: 'users/templates/signup.html',
                     controller: 'HomeController'
                 }).
                  when('/user-profile', {
-                    templateUrl: 'user-profile.html',
+                    templateUrl: 'users/templates/user-profile.html',
                     controller: 'HomeController'
                 }).
                    when('/account-settings', {
-                    templateUrl: 'account-settings.html',
+                    templateUrl: 'users/templates/account-settings.html',
                     controller: 'HomeController'
                 }).
                     when('/my-orders', {
-                    templateUrl: 'my-orders.html',
+                    templateUrl: 'users/templates/my-orders.html',
                     controller: 'HomeController'
                 }).
                 when('/logout', {
-                    templateUrl: 'logout.html',
+                    templateUrl: 'users/templates/logout.html',
                     controller: 'HomeController'
                 }).  
                 when('/order-details', {
-                    templateUrl: 'order-details.html',
+                    templateUrl: 'users/templates/order-details.html',
                     controller: 'HomeController'
                 }).              
                 otherwise({
-                    redirectTo: '/'
+                    redirectTo: 'users/templates/home.html'
                 });
-        
+
             $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function ($q, $location, $localStorage) {
                 return {
                     'request': function (config) {
@@ -88,4 +75,4 @@
                 }
             });
         });
-})();
+};
