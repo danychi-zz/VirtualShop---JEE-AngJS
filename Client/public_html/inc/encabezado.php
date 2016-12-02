@@ -43,11 +43,11 @@
                         
 
                        <div class="boton-box">
-                                    <form action="../user-views/user.php#/signin">
+                                    <form action="users/templates/user.php#/signin">
                                         <input class="btn btn-theme"  type="submit" value="Login">
                                     </form>
 
-                                    <form action="../user-views/user.php#/signup">
+                                    <form action="users/templates/user.php#/signup">
                                         <input class="btn btn-theme"  type="submit" value="Register">
                                     </form>
                         </div> 

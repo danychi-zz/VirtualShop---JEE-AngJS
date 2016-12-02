@@ -26,9 +26,12 @@ include '../inc/encabezado.php';
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular-route.min.js"></script>
     <script src="../lib-user/ngStorage.js"></script>
-    <script src="../scripts-shop/app-shop.js"></script>
-    <script src="../scripts-shop/controllers.js"></script>
-    <script src="../scripts-shop/services.js"></script>
+    <script src="shop/shop.module.js"></script>
+    <script src="shop/shop.filters.js"></script>
+    <script src="shop/shop.config.js"></script>
+    <script src="shop/shop.constants.js"></script>
+    <script src="shop/shop.factories.js"></script>
+    <script src="shop/shop.js"></script>
     <script src="../js/dirPagination.js"></script>
         <script>
 

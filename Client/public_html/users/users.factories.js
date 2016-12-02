@@ -39,10 +39,10 @@ angular
                 return window.atob(output);
             }
             function signup (data, success, error) {
-                $http.post(urls.BASE_API_USERS + 'signup', data).success(success).error(error)
+                $http.post(urls.BASE_API_USERS + 'signup', data).success(success).error(error);
             }
             function signin (data, success, error) {
-                $http.post(urls.BASE_API_USERS + 'signin', data).success(success).error(error)
+                $http.post(urls.BASE_API_USERS + 'signin', data).success(success).error(error);
             }
             function logout (success) {
                 delete $localStorage.token;
@@ -58,28 +58,28 @@ angular
                 success();
             }
             function update (data, success, error) {
-               $http.put(urls.BASE_API_USERS + 'update', data).success(success).error(error)
+               $http.put(urls.BASE_API_USERS + 'update', data).success(success).error(error);
             }
             function myOrders (success, error) {
-               $http.get(urls.BASE_API_ORDERS + 'userId').success(success).error(error)
+               $http.get(urls.BASE_API_ORDERS + 'userId').success(success).error(error);
             }
             function getUserInfo (success, error) {
-                $http.get(urls.BASE_API_USERS + 'getUserInfo').success(success).error(error)
+                $http.get(urls.BASE_API_USERS + 'getUserInfo').success(success).error(error);
             }
             function getProductsIdByOrderId (data, success, error) {
-               $http.get(urls.BASE_API_ORDER_DETAILS +'orderId/' + data).success(success).error(error)
+               $http.get(urls.BASE_API_ORDER_DETAILS +'orderId/' + data).success(success).error(error);
             }
             function getPaymentInfo: function (data, success, error) {
-               $http.get(urls.BASE_API_PAYMENT_DETAILS +'orderId/'+ data).success(success).error(error)
+               $http.get(urls.BASE_API_PAYMENT_DETAILS +'orderId/'+ data).success(success).error(error);
             }
             function getProductsByProductsId: function (data, success, error) {
-               $http.post(urls.BASE_API_PRODUCTS +'productsId/' , data).success(success).error(error)
+               $http.post(urls.BASE_API_PRODUCTS +'productsId/' , data).success(success).error(error);
             }
             function getOrderDetailsByOrderId: function (data, success, error) {
-               $http.get(urls.BASE_API_ORDER_DETAILS +'orderDetailsOrderId/' + data).success(success).error(error)
+               $http.get(urls.BASE_API_ORDER_DETAILS +'orderDetailsOrderId/' + data).success(success).error(error);
             }
             function deleteOrder: function (data, success, error) {
-                $http.delete(urls.BASE_API_ORDERS +'orderId/' + data).success(success).error(error)                            
+                $http.delete(urls.BASE_API_ORDERS +'orderId/' + data).success(success).error(error);                 
             }
             function getStatus: function (statusId) {
                     if(statusId != null){
