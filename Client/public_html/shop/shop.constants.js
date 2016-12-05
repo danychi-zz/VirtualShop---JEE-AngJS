@@ -1,5 +1,5 @@
 angular
-	.module('app')   
+	.module('app.shop')  
 	.constant('urls', {
 	            BASE: 'http://localhost:80',
 	            BASE_API_USERS: 'http://localhost:8085/virtualShopWS/api/rest/users/',

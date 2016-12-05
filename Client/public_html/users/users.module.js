@@ -1,5 +1,5 @@
 angular
-		.module('app', [
+		.module('app.users', [
 	        'ngStorage',
 	        'ngRoute'
 	    ])

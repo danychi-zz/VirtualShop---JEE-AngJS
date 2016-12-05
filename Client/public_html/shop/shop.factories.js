@@ -1,6 +1,6 @@
 angular
-	.module('app')  
-    .factory('shopService', shopService]
+    .module('app.shop')  
+    .factory('shopService', shopService)
 
     shopService.$inject = ['$http','$localStorage','urls'];   
 

@@ -1,5 +1,5 @@
 angular
-    .module('app', [
+    .module('app.shop', [
         'angularUtils.directives.dirPagination',
         'ngStorage',
         'ngCart',

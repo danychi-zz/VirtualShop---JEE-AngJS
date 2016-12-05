@@ -1,6 +1,6 @@
 angular
-	.module('app')  
-    .controller('ShopController', ['$rootScope', '$scope', '$location','$filter', '$localStorage', 'shopService', 'ngCart', ShopController]
+	.module('app.shop')  
+    .controller('ShopController', ['$rootScope', '$scope', '$location','$filter', '$localStorage', 'shopService', 'ngCart', ShopController])
 
         function ShopController ($rootScope, $scope, $location, $filter, $localStorage, shopService, ngCart ) {
 
@@ -31,14 +31,14 @@ angular
         $scope.getProducts = function () {
 
 
-                Shop.getProducts(successGetProducts, function (res) {
+                shopService.getProducts(successGetProducts, function (res) {
                    
                     $rootScope.error = res.error || 'Failed to get the Products.';
                      })
             }
         $scope.getUserInfo = function () {
 
-                Shop.getUserInfo(succesGetUserInfo, function (res) {
+                shopService.getUserInfo(succesGetUserInfo, function (res) {
                    
                     $rootScope.error = res.error || 'Failed to get the User Info.';
                      })
@@ -66,7 +66,7 @@ angular
                 }
             };
 
-                Shop.createOrder(formData, succesCreateOrder, function (res) {
+                shopService.createOrder(formData, succesCreateOrder, function (res) {
                    
                     $rootScope.error = res.error || 'Failed to create the Order, check the information.';
                      })

@@ -1,5 +1,5 @@
 angular
-	.module('app')  
+  .module('app.shop')  
 	.filter('unique', function() {
                 return function(collection, keyname) {
                     var output = [], 
@@ -15,4 +15,4 @@ angular
 
                 return output;
                 };
-    }
+    });

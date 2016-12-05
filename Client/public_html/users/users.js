@@ -1,5 +1,5 @@
     angular
-        .module('app')
+        .module('app.users')
         .controller('UserController', ['$rootScope', '$scope', '$location','$filter', '$localStorage', 'userService', UserController]);
 
             function UserController ($rootScope, $scope, $location, $filter, $localStorage,  userService) {
@@ -29,7 +29,7 @@
                     $localStorage.productsId = res;
 
                         var formData =  $localStorage.productsId ;
-                        Auth.getProductsByProductsId(formData,successGetProductsByProductsId , function (res) {
+                        userService.getProductsByProductsId(formData,successGetProductsByProductsId , function (res) {
                             $rootScope.error = res.error || 'Failed to get the Products.';
                          })
                     }
@@ -63,7 +63,7 @@
                         password: $scope.password,
                     };
 
-                    Auth.signin(formData, successAuth, function () {
+                    userService.signin(formData, successAuth, function () {
                         $rootScope.error = 'Invalid credentials.';
                     })
                 };
@@ -83,7 +83,7 @@
                         city: $scope.city
                     };
 
-                    Auth.signup(formData, successAuth, function (res) {
+                    userService.signup(formData, successAuth, function (res) {
                         $rootScope.error = res.error || 'Failed to sign up.';
                     })
                 };
@@ -103,13 +103,13 @@
                         city: $scope.city
                     };
 
-                    Auth.update(formData, successUpdate, function (res) {
+                    userService.update(formData, successUpdate, function (res) {
                         $rootScope.error = res.error || 'Failed to update.';
                     })
                 };
 
                  $scope.logout = function () {
-                    Auth.logout(function () {
+                    userService.logout(function () {
                         $localStorage.token = null;
                     });
                 };
@@ -119,7 +119,7 @@
                 $scope.myOrders = function () {
                 $localStorage.status= [];
                 $rootScope.status = [];
-                Auth.myOrders(successGetOrders, function (res) {
+                userService.myOrders(successGetOrders, function (res) {
                    
                     $rootScope.error = res.error || 'Failed to get Orders.';
                 })
@@ -147,7 +147,7 @@
 
                 $scope.getUserInfo = function () {
 
-                    Auth.getUserInfo(succesGetUserInfo, function (res) {
+                    userService.getUserInfo(succesGetUserInfo, function (res) {
                        
                         $rootScope.error = res.error || 'Failed to get the User Info.';
                          })
@@ -162,7 +162,7 @@
 
                         var formData = $rootScope.orderId;
 
-                    Auth.getProductsIdByOrderId(formData,successGetProductsId, function (res) {
+                    userService.getProductsIdByOrderId(formData,successGetProductsId, function (res) {
                        
                         $rootScope.error = res.error || 'Failed to get the Products Info.';
                          })
@@ -171,7 +171,7 @@
 
                     var formData = $rootScope.orderId;
 
-                    Auth.getPaymentInfo(formData,successGetPaymentInfo, function (res) {
+                    userService.getPaymentInfo(formData,successGetPaymentInfo, function (res) {
                        
                         $rootScope.error = res.error || 'Failed to get the Payment Info.';
                          })
@@ -182,7 +182,7 @@
 
                     var formData = $rootScope.orderId;
 
-                    Auth.getOrderDetailsByOrderId(formData,successGetOrderDetailsByOrderId , function (res) {
+                    userService.getOrderDetailsByOrderId(formData,successGetOrderDetailsByOrderId , function (res) {
                        
                         $rootScope.error = res.error || 'Failed to get the Order Details.';
                          })
@@ -192,7 +192,7 @@
 
                     var formData = orderId;
 
-                    Auth.deleteOrder(formData,successDeleteOrder, function (res) {
+                    userService.deleteOrder(formData,successDeleteOrder, function (res) {
                        
                         $rootScope.error = res.error || 'Failed to Delete the Order.';
                          })
@@ -200,12 +200,12 @@
 
                 $scope.getStatus = function (statusId) {
                     if($localStorage.status[$rootScope.orders.length-1]==null){
-                    $localStorage.status.push(Auth.getStatus(statusId));
+                    $localStorage.status.push(userService.getStatus(statusId));
                     }
                      $rootScope.status =$localStorage.status;
                 };
                 $scope.getSingleStatus = function (statusId){
-                    $localStorage.ss = (Auth.getStatus(statusId));
+                    $localStorage.ss = (userService.getStatus(statusId));
                     $rootScope.ss = $localStorage.ss;
                 }  
             }

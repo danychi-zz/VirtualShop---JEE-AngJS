@@ -1,5 +1,5 @@
 angular
-        .module('app')
+        .module('app.users')
         .factory('userService', userService)
 
         userService.$inject = ['$http','urls','$localStorage'];    
@@ -69,19 +69,19 @@ angular
             function getProductsIdByOrderId (data, success, error) {
                $http.get(urls.BASE_API_ORDER_DETAILS +'orderId/' + data).success(success).error(error);
             }
-            function getPaymentInfo: function (data, success, error) {
+            function getPaymentInfo (data, success, error) {
                $http.get(urls.BASE_API_PAYMENT_DETAILS +'orderId/'+ data).success(success).error(error);
             }
-            function getProductsByProductsId: function (data, success, error) {
+            function getProductsByProductsId (data, success, error) {
                $http.post(urls.BASE_API_PRODUCTS +'productsId/' , data).success(success).error(error);
             }
-            function getOrderDetailsByOrderId: function (data, success, error) {
+            function getOrderDetailsByOrderId (data, success, error) {
                $http.get(urls.BASE_API_ORDER_DETAILS +'orderDetailsOrderId/' + data).success(success).error(error);
             }
-            function deleteOrder: function (data, success, error) {
+            function deleteOrder (data, success, error) {
                 $http.delete(urls.BASE_API_ORDERS +'orderId/' + data).success(success).error(error);                 
             }
-            function getStatus: function (statusId) {
+            function getStatus (statusId) {
                     if(statusId != null){
                         var status;
                         switch (statusId){

@@ -1,46 +1,52 @@
-    <div class="container" data-ng-init="myOrders();getUserInfo();" >
-        <div class="row">
+<div class="jumbotron">
+    <div class="container">
+        <div class="col-sm-8 col-sm-offset-2">
+        <div class="container" data-ng-init="myOrders();getUserInfo();" >
+            <div class="row">
 
 
-            <nav>
-            <div class="col-lg-4 user-profile">
-                <ul>
-                    <li><a href="user.php#/user-profile">User Profile</a></li>
-                    <li><a href="user.php#/account-settings">Account Settings</a></li>
-                    <li><a href="user.php#/my-orders">My orders</a></li>
-                    <li><a href="user.php#/logout" ng-click="logout()">Logout</a></li>
-                </ul>
-               
+                <nav>
+                <div class="col-lg-4 user-profile">
+                    <ul>
+                        <li><a href="#user-profile">User Profile</a></li>
+                        <li><a href="#account-settings">Account Settings</a></li>
+                        <li><a href="#my-orders">My orders</a></li>
+                        <li><a href="#logout" ng-click="logout()">Logout</a></li>
+                    </ul>
+                   
+                </div>
+                </nav>
+
+                 <div class="col-lg-8">
+                    <h2>My Orders</h2>
+                    <div>
+                   <table class="orders-table" style="width:100%">
+                      <tr>
+                        <th>Order</th>
+                        <th>Total</th>
+                        <th>Order Date</th>
+                        <th>Status</th> 
+                        <th>Actions</th>
+                      </tr>
+                      
+                      <tr ng-repeat="x in orders">         
+                        <td >#{{x.orderId}}</td>
+                        <td>{{x.total}}$</td>
+                        <td>{{x.orderDate}}</td>
+                        <td  data-ng-init="getStatus(x.statusId)">{{status[$index]}}</td> 
+                        <td>
+                                <a href="#order-details" ng-click="setOrderIdtoShow(x.orderId)"><i class="fa fa-arrow-circle-right"> </i> Show Details </a></br>
+                                <a  ng-click="deleteOrder(x.orderId)"> <i class="fa fa-arrow-circle-right"> </i> Delete Order</a></td>
+                      </tr>
+                      <!--http://codepen.io/jackrugile/pen/EyABe credits-->
+                    </table>
+                    <p data-ng-show="error" class="error">{{ error }}</p>
+                </div>
+                
+
+
             </div>
-            </nav>
-
-             <div class="col-lg-8">
-                <h2>My Orders</h2>
-                <div>
-               <table class="orders-table" style="width:100%">
-                  <tr>
-                    <th>Order</th>
-                    <th>Total</th>
-                    <th>Order Date</th>
-                    <th>Status</th> 
-                    <th>Actions</th>
-                  </tr>
-                  
-                  <tr ng-repeat="x in orders">         
-                    <td >#{{x.orderId}}</td>
-                    <td>{{x.total}}$</td>
-                    <td>{{x.orderDate}}</td>
-                    <td  data-ng-init="getStatus(x.statusId)">{{status[$index]}}</td> 
-                    <td>
-                            <a href="user.php#/order-details" ng-click="setOrderIdtoShow(x.orderId)"><i class="fa fa-arrow-circle-right"> </i> Show Details </a></br>
-                            <a  ng-click="deleteOrder(x.orderId)"> <i class="fa fa-arrow-circle-right"> </i> Delete Order</a></td>
-                  </tr>
-                  <!--http://codepen.io/jackrugile/pen/EyABe credits-->
-                </table>
-                <p data-ng-show="error" class="error">{{ error }}</p>
-            </div>
-            
-
-
+        </div>
         </div>
     </div>
+</div>        

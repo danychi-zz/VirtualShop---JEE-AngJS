@@ -73,7 +73,7 @@
             <div class="pricing-box-alt" >
                 
                 <div class="pricing-heading">
-                    <a href="shop.php#/product-details" ng-click="setProductIdtoShow(x.productId);setCategorytoShow(x.category);"><img id="imgS" src="../img/products/{{x.image}}"></a>
+                    <a href="#product-details" ng-click="setProductIdtoShow(x.productId);setCategorytoShow(x.category);"><img id="imgS" src="../img/products/{{x.image}}"></a>
                     <h4>{{ x.productname }}</h4>
                 </div>
 
@@ -110,7 +110,7 @@
                      </div>
 
                     <div ng-hide="{{token}}"> 
-                     <a href="http://localhost:8080/user-views/user.php?#/signin"> <button class="btn btn-primary">Checkout</button></a>
+                     <a href="#signin"> <button class="btn btn-primary">Checkout</button></a>
                     </div>
                 </div>
             </div>
